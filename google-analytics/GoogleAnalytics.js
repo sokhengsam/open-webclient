@@ -29,7 +29,3 @@ var _gaq = _gaq || [];
 	if(typeof exports !== 'undefined') exports.GoogleAnalytics = GoogleAnalytics;
 	else window.GoogleAnalytics = GoogleAnalytics;
 })();
-
-//var googleAnalytics = new GoogleAnalytics('UA-39211749-1');
-var googleAnalytics = new GoogleAnalytics('UA-39955842-6');//stage server
-//var googleAnalytics = new GoogleAnalytics('UA-39955842-4');// production server
