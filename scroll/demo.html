@@ -1,0 +1,420 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="window-scroll-handler.js"></script>
+<script src="IllegalDOMBindingException.js"></script>
+<script type="text/javascript">
+	var times = 1;
+	$(function(){
+		$(window).scrollPagination({callbackHandler: endOfPage,loadingClass: "end-of-scroll-loading",loadingContainer: $(".loading")});
+		
+		//$("body").scrollPagination({callbackHandler: endOfPage,loadingClass: "end-of-scroll-loading",loadingContainer: $(".loading")}); //unsuport DOM binding
+		//$.fn.scrollPagination.addLoading({loadingClass: "end-of-scroll-loading_customize",loadingContainer: $(".loading")});
+		function endOfPage(onSuccess){
+			$(".loading").show();
+			$.ajax({
+				url:"http://www.hawkee.com/profile/activities.php?tool_action=profile&tool_id=&tt=&mode=profile&endless=1&user_id=2&plat_type=&s=&p=3&_=1374051089499",
+				crossDomain: true,
+				accept: "*",
+				complete: function(data){
+					$(".loading").hide();
+					onSuccess();
+					$(".remoteContainer").append($(".flora :first").html());
+				},
+				dataType: "text/html"
+							
+			});
+			
+		}
+	});
+</script>
+<style>
+	html { height: 100%; }
+	body { height: 100%; }
+	.end-of-scroll-loading{
+		background-image: url("loading.gif");
+		width: 60px;
+		height: 60px;
+		background-repeat: no-repeat;
+		display:none;
+	}
+	.end-of-scroll-loading_customize{
+		background-image: url("loading_new.gif");
+		width: 200px;
+		height: 150px;
+		background-repeat: no-repeat;
+		display:none;
+	}
+</style>
+</head>
+<body>
+	<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+	<div id="ui" class="flora">
+		<div id="instr" class='contain'>
+			<h3>About This Demo</h3>
+			<p>
+			This is a demo note application for the 
+			<a href="http://welcome.totheinter.net/tutorials/model-view-controller-in-jquery/">jQuery
+			Model-View-Controller Tutorial</a> (Phase 2)
+			by <a href="http://welcome.totheinter.net/">Adam Wulf</a>.
+			</p><p>
+			With this application, you can add, edit, and delete simple text notes. There is
+			no login, so anyone can see anything you post (and you can see what they post)
+			</p><p>
+			The server is set up to fail AJAX requests 10% of the time to demonstrate how the
+			UI can recover from such errors.
+			</p><p>
+			Try it out and have fun!
+			</p>
+			<p>
+			<input value="Close About Box" type="button"/></p>
+		</div>
+		<div id="notes" class='contain'>
+			<h3>List o' Notes</h3>
+			<ul>
+			</ul>
+		</div>
+		<form id="addform" class='contain'>
+			<h3>Add New Note</h3>
+			<label for="subject">Subject:</label>
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="add" value="Add Note"/>
+		</form>
+		<form id="editform" class='contain'>
+			<h3>Edit Note</h3>
+			<label for="subject">Subject:</label>
+			<input type="hidden" id="noteId" />
+			<input name="subject" class="subject input" />
+			<br/>
+			<label for="subject">Body:</label>
+			<textarea name="body" class="body input" ></textarea>
+			<br/>
+			<input type="button" id="update" value="Update"/>
+			<input type="button" id="delete" value="Delete"/>
+			<input type="button" id="cancel" value="Cancel"/>
+		</form>
+		<div id="console" class='contain'>
+			<h3>Console</h3>
+		</div>
+	</div>
+	<div class="remoteContainer">
+
+	</div>
+	<div class="loading"></div>
+</body>
+</html>
