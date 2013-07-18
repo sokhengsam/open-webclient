@@ -1,7 +1,7 @@
 <html>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="window-scroll-handler.js"></script>
+<script src="WindowScrollHandler.js"></script>
 <script src="IllegalDOMBindingException.js"></script>
 <script type="text/javascript">
 	var times = 1;
@@ -19,7 +19,7 @@
 				complete: function(data){
 					$(".loading").hide();
 					onSuccess();
-					$(".remoteContainer").append($(".flora :first").html());
+					$(".remoteContainer").append($(".flora :first").html());"scroll/demo.html"
 				},
 				dataType: "text/html"
 							

@@ -1,22 +1,23 @@
 (function($){
 	$.fn.scrollPagination = function(options){
 		if(!$(this).is($(window))) throw new IllegalDOMBindingException("Unsupport DOM Binding");
-		var options = $.extend($.fn.scrollPagination.defaultOptions, options);
+		var options = $.extend(defaultOptions, options);
  		$(window).scroll(function () { 
 			if ($(window).scrollTop() >= $(document).height() - $(window).height() && !options.isAjaxLoading) {
 			     options.isAjaxLoading = true;
 			     options.callbackHandler(function(){
-				options.isAjaxLoading = false;
+			     options.isAjaxLoading = false;
 			     });
 			}
 		});
-		$.fn.scrollPagination.addLoading();
+		addLoading();
 	};
-	$.fn.scrollPagination.addLoading = function(options){
-		var options = $.extend($.fn.scrollPagination.defaultOptions, options);
-		options.loadingContainer.addClass(options.loadingClass);			
+	
+	function addLoading(){
+		defaultOptions.loadingContainer.addClass(defaultOptions.loadingClass);			
 	}
-	$.fn.scrollPagination.defaultOptions = {
+	
+	var defaultOptions = {
 		callbackHandler: "",
 		loadingClass: "",
 		loadingContainer: "",
